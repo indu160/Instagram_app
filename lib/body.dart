@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/activity.dart';
+import 'package:instagram/discover.dart';
 import 'package:instagram/home.dart';
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
@@ -46,13 +48,20 @@ class _BodyState extends State<Body> {
                   onPressed: (){},
                   icon: const Icon(Icons.home)),
               IconButton(iconSize: 30,
-                  onPressed: (){},
+                  onPressed: (){Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => const Discover()),
+                  );},
                   icon: const Icon(Icons.search)),
               IconButton(iconSize: 30,
-                  onPressed: (){},
+                  onPressed: (){
+                  },
                   icon: const Icon(Icons.video_collection_outlined)),
               IconButton(iconSize: 30,
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => const Activity()),
+                    );
+                  },
                   icon: const Icon(Icons.favorite_outline_sharp)),
               IconButton(iconSize: 30,
                   onPressed: (){},

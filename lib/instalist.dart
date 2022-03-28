@@ -38,7 +38,7 @@ class _InstalistState extends State<Instalist> {
                         shape: BoxShape.circle,
 
                         image: DecorationImage(image: AssetImage(
-                            'assets/images/img_5.png'),
+                            'assets/images/s.png'),
                         ),
                       ),
                     ),const SizedBox(
@@ -50,9 +50,46 @@ class _InstalistState extends State<Instalist> {
                 const IconButton(onPressed: null, icon:Icon(Icons.more_vert,color: Colors.black),
                 )
               ],
-            ),)
-          ],
+            ),),
+            Flexible(
+              fit: FlexFit.loose,
+                child: Image.asset("assets/images/p.png",fit: BoxFit.cover,
+            ),
+            ),
+            SizedBox(
+              height: 10,
+              ),
 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.favorite_outline),
+
+
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Icon(Icons.comment)
+      ],
+
+    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.send)
+                      ],
+
+                    )
+                  ],
+                )
+              ],
+            )
+
+          ],
         ),
     );
   }
