@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/stories.dart';
 class Instalist extends StatefulWidget {
@@ -28,6 +29,7 @@ class _InstalistState extends State<Instalist> {
             Padding(padding: const EdgeInsets.fromLTRB(16.0,16.0, 16.0, 16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -56,41 +58,29 @@ class _InstalistState extends State<Instalist> {
                 child: Image.asset("assets/images/p.png",fit: BoxFit.cover,
             ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
               ),
-
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Icon(Icons.favorite_outline),
-
-
-    Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Icon(Icons.comment)
-      ],
-
-    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Icon(Icons.send)
-                      ],
-
-                    )
-                  ],
-                )
+              children: const [
+                Icon(Icons.favorite_outline,),
+                Icon(Icons.comment),
+                Icon(Icons.send),
               ],
-            )
+                ),
+            SizedBox(
 
-          ],
-        ),
-    );
+              height: 20,
+              child: Text("25,818 likes",style: TextStyle(fontWeight:FontWeight.bold),
+            ),
+            )
+              ],
+
+            )
+            );
+
+
   }
 }

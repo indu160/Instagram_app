@@ -12,8 +12,8 @@ class _ReelsState extends State<Reels> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Icon(Icons.lock,color: Colors.black,),
-        title: Text("rahul_thakur006",style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold),),
+        leading: const Icon(Icons.lock,color: Colors.black,),
+        title: const Text("rahul_thakur006",style: TextStyle(color: Colors.black,fontSize: 25,fontWeight: FontWeight.bold),),
 
       ),
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:instagram/activity.dart';
+import 'package:instagram/details.dart';
 import 'package:instagram/discover.dart';
 import 'package:instagram/home.dart';
+import 'package:instagram/profile.dart';
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
 
@@ -64,7 +66,11 @@ class _BodyState extends State<Body> {
                   },
                   icon: const Icon(Icons.favorite_outline_sharp)),
               IconButton(iconSize: 30,
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => const Details()),
+                    );
+                  },
                   icon: const Icon(Icons.person_pin)),
 
             ],

@@ -5,7 +5,6 @@ class Discover extends StatefulWidget {
   @override
   _DiscoverState createState() => _DiscoverState();
 }
-
 class _DiscoverState extends State<Discover> {
   @override
   Widget build(BuildContext context) {
@@ -14,7 +13,7 @@ class _DiscoverState extends State<Discover> {
         (
         elevation: 1,
         backgroundColor: Colors.white,
-        leading: const Icon(Icons.arrow_back,color: Colors.black,size: 30,),
+        leading: const Icon(Icons.arrow_back,color: Colors.black,),
         title: const Text("Discover people",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),
       ),
       body:
@@ -23,32 +22,39 @@ class _DiscoverState extends State<Discover> {
       scrollDirection: Axis.vertical,
           child:Column(mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          ListView.builder(
-            scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-    itemCount:1,itemBuilder:(BuildContext context, int index) {
-          return ListTile(
-            
-              title:Image.asset('assets/images/f.png',height: 30,width: 30,alignment: Alignment.topLeft,),
-              trailing:  Container(
-                width: 130,
-                color: Colors.blueAccent,
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+            color: Colors.white,
+            height: 200,
+            child:
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  CircleAvatar(
+                    radius: 30.0,
+                    backgroundImage:
+                    AssetImage("assets/images/f.png"),
+                    backgroundColor: Colors.transparent,
 
-                child:
-                  TextButton(
-
-                    style: ButtonStyle(
-                    ),
-                    onPressed: (){},
-                    child: Text("Connect",style: TextStyle(color: Colors.white,fontSize: 18),
-
-                    ),
                   ),
-              ),
+                  SizedBox(
+                    height: 20,
+                    width: 10,
+                  ),
+                  Text("Connect to Facebook",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 16),)
 
-          );
-        }
-    )
+
+
+
+
+
+          ]
+              )
+
+
+          )
+
 
         ]
       )
