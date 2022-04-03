@@ -4,6 +4,7 @@ import 'package:instagram/details.dart';
 import 'package:instagram/discover.dart';
 import 'package:instagram/home.dart';
 import 'package:instagram/profile.dart';
+import 'package:instagram/reels.dart';
 class Body extends StatefulWidget {
   const Body({Key? key}) : super(key: key);
 
@@ -55,7 +56,9 @@ class _BodyState extends State<Body> {
                   );},
                   icon: const Icon(Icons.search)),
               IconButton(iconSize: 30,
-                  onPressed: (){
+                  onPressed: (){  Navigator.push(context, MaterialPageRoute(
+                      builder: (context) => const Reels()),
+                  );
                   },
                   icon: const Icon(Icons.video_collection_outlined)),
               IconButton(iconSize: 30,

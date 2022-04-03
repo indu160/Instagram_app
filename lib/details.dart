@@ -12,13 +12,14 @@ class _DetailsState extends State<Details> {
     return Scaffold(
       appBar: AppBar(
 
-        elevation: 1,
+
+        elevation: 0.0,
       backgroundColor: Colors.white,
         leadingWidth: 13,
-        leading: const Icon(Icons.lock,color: Colors.grey,size: 16,),
-          title: Text("rahul_thakur_006",style: const TextStyle(color: Colors.black),),
+        leading: const Icon(Icons.lock_outline_rounded,color: Colors.grey,size: 17,),
+          title: const Text("rahul_thakur_006",style: TextStyle(color: Colors.black),),
         actions: const [
-          Icon(Icons.expand_more_rounded,color: Colors.black,),
+          Icon(Icons.keyboard_arrow_down,color: Colors.black,),
           SizedBox(
             width: 150,
           ),
@@ -26,25 +27,13 @@ class _DetailsState extends State<Details> {
           SizedBox(
             width: 20,
           ),
-          Icon(Icons.format_line_spacing,color: Colors.black,),
+          Icon(Icons.menu,color: Colors.black,),
           SizedBox(
             width: 20,
           ),
-
         ],
       ),
-      body: Container(
-        padding: EdgeInsets.only(top:30),
-            child:
-            const CircleAvatar(
-              radius: 30.0,
-              backgroundImage:
-              NetworkImage("https://images.unsplash.com/photo-1599475735868-a8924c458792?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGFuZHNvbWUlMjBib3l8ZW58MHx8MHx8&w=1000&q=80"),
-              backgroundColor: Colors.transparent,
-            ),
-            color: Colors.white,
 
-          ),
 
     );
   }

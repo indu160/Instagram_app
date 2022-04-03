@@ -1,12 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:instagram/body.dart';
 import 'package:instagram/facebook.dart';
 import 'package:instagram/password.dart';
 import 'package:instagram/profile.dart';
 import 'package:instagram/signup.dart';
 import 'package:instagram/welcom.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -19,12 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Instagram',
         theme: ThemeData(primarySwatch: Colors.blue),
-        // home: Welcome());
-        //home:Password());
-        // home:Signup());
-       home: const MyHomePage());
-    //home:Facebook());
-    // home: Profile());
+        home: const MyHomePage());
   }
 }
 
@@ -38,10 +38,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void _incrementCounter() {
-    setState(() {});
-  }
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
 
+  _loginWithEmailPassword() async {
+    try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.toString(),
+        password: passController.text.toString(),
+      );
+      if (userCredential.user != null) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Body()),
+        );
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               width: 400,
               child: TextField(
+                controller: emailController,
                 decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 25, horizontal: 20),
@@ -96,6 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: const BoxDecoration(color: Colors.white12),
               width: 400,
               child: TextField(
+                controller: passController,
                 obscureText: true,
                 decoration: InputDecoration(
                   contentPadding:
@@ -140,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 40,
               width: 400,
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: _loginWithEmailPassword,
                   style: ElevatedButton.styleFrom(
                     elevation: 3,
                   ),
@@ -203,14 +225,15 @@ class _MyHomePageState extends State<MyHomePage> {
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
-                            recognizer: TapGestureRecognizer(
-
-                            )..onTap = () {
-                              print("abc");
-                              Navigator.push(context, MaterialPageRoute(
-                                  builder: (context) => const Signup()),
-                              );
-                            })
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("abc");
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Signup()),
+                                );
+                              })
                       ])),
                 ]))
           ])),
