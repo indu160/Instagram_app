@@ -2,11 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:instagram/body.dart';
-import 'package:instagram/facebook.dart';
-import 'package:instagram/password.dart';
-import 'package:instagram/profile.dart';
 import 'package:instagram/signup.dart';
-import 'package:instagram/welcom.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
