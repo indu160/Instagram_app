@@ -62,35 +62,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        actions: [
-          Column(mainAxisAlignment: MainAxisAlignment.end, children: const [
-            Icon(
-              Icons.close,
-              size: 50,
-            ),
-          ])
-        ],
-      ),
+      appBar: _buildAppBar(),
       backgroundColor: Colors.black,
-      body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
             Image.asset(
               'assets/images/instalogo.jpeg',
               height: 130,
             ),
-            const SizedBox(
-              height: 30,
-            ),
+            const SizedBox(height: 30),
             Container(
-              decoration: const BoxDecoration(
-                color: Colors.white12,
-              ),
-              width: 400,
+              color: Colors.white12,
               child: TextField(
                 controller: emailController,
                 decoration: InputDecoration(
@@ -107,12 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         const TextStyle(color: Colors.grey, fontSize: 18)),
               ),
             ),
-            const SizedBox(
-              height: 5,
-            ),
+            const SizedBox(height: 5),
             Container(
-              decoration: const BoxDecoration(color: Colors.white12),
-              width: 400,
+              color: Colors.white12,
               child: TextField(
                 controller: passController,
                 obscureText: true,
@@ -137,9 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             const InkWell(
               child: Text(
                 "Forgot password?",
@@ -152,88 +132,95 @@ class _MyHomePageState extends State<MyHomePage> {
                 textAlign: TextAlign.right,
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 20),
             SizedBox(
               height: 40,
-              width: 400,
               child: ElevatedButton(
                   onPressed: _loginWithEmailPassword,
-                  style: ElevatedButton.styleFrom(
-                    elevation: 3,
-                  ),
+                  style: ElevatedButton.styleFrom(elevation: 3),
                   child: const Text("Log in")),
             ),
-            const SizedBox(
-              height: 12,
+            const SizedBox(height: 12),
+            Row(
+              children: const <Widget>[
+                Expanded(child: Divider(color: Colors.grey)),
+                Text(
+                  "OR",
+                  style: TextStyle(color: Colors.grey),
+                ),
+                Expanded(child: Divider(color: Colors.grey)),
+              ],
             ),
-            Row(children: const <Widget>[
-              Expanded(
-                  child: Divider(
-                color: Colors.grey,
-              )),
-              Text(
-                "OR",
-                style: TextStyle(color: Colors.grey),
-              ),
-              Expanded(
-                  child: Divider(
-                color: Colors.grey,
-              )),
-            ]),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Image.asset(
-                'assets/images/f.png',
-                height: 35,
-                width: 32,
-              ),
-              const SizedBox(
-                width: 15,
-              ),
-              Column(
-                children: const [
-                  Text("Log In With Facebook",
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/f.png',
+                  height: 35,
+                  width: 32,
+                ),
+                const SizedBox(width: 15),
+                Column(
+                  children: const [
+                    Text(
+                      "Log In With Facebook",
                       style: TextStyle(
                         color: Colors.blue,
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
-                      ))
-                ],
-              )
-            ]),
-            Container(
-                padding: const EdgeInsets.only(top: 150),
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  RichText(
-                      text: TextSpan(
-                          text: 'Don\'t have an account?',
-                          style:
-                              const TextStyle(color: Colors.grey, fontSize: 18),
-                          children: <TextSpan>[
-                        TextSpan(
-                            text: ' Sign up',
-                            style: const TextStyle(
-                              color: Colors.blueAccent,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                print("abc");
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const Signup()),
-                                );
-                              })
-                      ])),
-                ]))
-          ])),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    text: 'Don\'t have an account?',
+                    style: const TextStyle(color: Colors.grey, fontSize: 18),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: ' Sign up',
+                          style: const TextStyle(
+                            color: Colors.blueAccent,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Signup()),
+                              );
+                            })
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  _buildAppBar() {
+    return AppBar(
+      backgroundColor: Colors.black,
+      actions: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: const [
+            Icon(Icons.close, size: 50),
+          ],
+        )
+      ],
     );
   }
 }
